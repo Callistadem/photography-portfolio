@@ -1,0 +1,5 @@
+<template>
+    <div>
+      <h1>Travel</h1>
+    </div>
+</template>

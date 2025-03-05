@@ -1,47 +1,45 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div id="app">
+    <header v-if="$route.name !== 'home'">
+      <router-link to="/" class="logo">CALLISTA DEM</router-link> 
+      <nav>
+        <router-link to="/">Home</router-link> 
+        <router-link to="/about">About</router-link> 
+        <router-link to="/contact">Contact</router-link> 
+        <router-link to="/portfolio">Portfolio</router-link>
+      </nav>
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <main>
+      <router-view />
+    </main>
+  </div>
 </template>
 
+
 <style scoped>
-header {
-  line-height: 1.5;
-}
+  
+  @import url('https://fonts.googleapis.com/css2?family=Andada+Pro:ital,wght@0,400..840;1,400..840&display=swap');
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
   header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    padding: 2rem;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  nav {
+    float: right;
   }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  nav a, .logo {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #FFF5E4;
   }
-}
+  
+  nav a:hover {
+    text-decoration: none;
+  }
+
 </style>
