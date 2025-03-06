@@ -1,6 +1,7 @@
 body {
     font-family: "Andada Pro", serif;
     font-size: 20px;
+    font-weight: 100;
     color: #FFF5E4;
     background-color: #8C9592;
     background-size: cover;
@@ -8,5 +9,22 @@ body {
     width: 100vw;
     padding: 0;
     margin: 0;
+}
+
+.home-bg {
+    background-image: url('@/assets/imgs/travel/DSCF2816.JPG');
+    background-size: cover;
+    background-position: bottom;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: #FFF5E4;
+    font-size: 20px;
+}
+
+a:hover {
+    color: #fff5e4cc;
 }
 

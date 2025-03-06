@@ -6,10 +6,10 @@
     <header v-if="$route.name !== 'home'">
       <router-link to="/" class="logo">CALLISTA DEM</router-link> 
       <nav>
-        <router-link to="/">Home</router-link> 
-        <router-link to="/about">About</router-link> 
-        <router-link to="/contact">Contact</router-link> 
-        <router-link to="/portfolio">Portfolio</router-link>
+        <router-link to="/">HOME</router-link> 
+        <router-link to="/portfolio">PORTFOLIO</router-link>
+        <router-link to="/about">ABOUT</router-link> 
+        <router-link to="/contact">CONTACT</router-link> 
       </nav>
     </header>
 
@@ -40,6 +40,7 @@
   
   nav a:hover {
     text-decoration: none;
+    color: #fff5e4cc;
   }
 
 </style>

@@ -1,32 +1,63 @@
 <template>
     <div id="#home">
-      <h1 class="title">CALLISTA DEM</h1>
-      <h4 class="position">TRAVEL PHOTOGRAPHER</h4>
+      <div class="title-container">
+        <p class="title">CALLISTA DEM</p>
+        <p class="subtitle">TRAVEL PHOTOGRAPHER</p>
+      </div>
       <nav>
-        <router-link to="/about">About</router-link> 
-        <router-link to="/contact">Contact</router-link> 
-        <router-link to="/portfolio">Portfolio</router-link>
+        <router-link to="/portfolio">PORTFOLIO</router-link>
+        <router-link to="/about">ABOUT</router-link> 
+        <router-link to="/contact">CONTACT</router-link> 
       </nav>
     </div>
 </template>
 
+<script>
+export default {
+  // Adding image background to body (only for home page)
+  mounted() {
+    document.body.classList.add("home-bg");
+  },
+  beforeUnmount() {
+    document.body.classList.remove("home-bg");
+  }
+};
+</script>
 
 <style scoped>
 
-  ::v-global(body){
-    background-image: url(@/assets/imgs/travel/DSCF2816.JPG); 
-    background-size: cover;
-  }
-
   #home{
-    align-items: center;
-    height: 100vh;
+    position: relative;
+  }
+  .title{
+    font-size: 4.5rem;
+    font-weight: 100;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
 
-  h1, h4 {
-    font-weight: 200;
+  .subtitle{
+    font-size: 2rem;
+    font-weight: 100;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .title-container {
     text-align: center;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
+  nav {
+    position: absolute;
+    bottom: 5%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10%;
+  }
 </style>
 
