@@ -1,19 +1,7 @@
 <template>
-  <div id="portfolio-travel">
-    <p>Take a look at my travel photos.</p>
-
-    <div class="gallery">
-      
-    </div>
-  </div>
+  <Gallery photoType="travel"/>
 </template>
 
-<style scoped>
-  #portfolio-travel {
-    text-align: center;
-  }
-
-  p {
-    padding: 3rem;
-  }
-</style>
+<script setup>
+  import Gallery from '@/components/gallery.vue';
+</script>

@@ -1,20 +1,7 @@
 <template>
-  <div id="portfolio-event">
-    <p>Take a look at my event photos.</p>
-
-    <div class="gallery">
-      
-    </div>
-    
-  </div>
+  <Gallery photoType="event"/>
 </template>
 
-<style scoped>
-  #portfolio-event {
-    text-align: center;
-  }
-
-  p {
-    padding: 3rem;
-  }
-</style>
+<script setup>
+  import Gallery from '@/components/gallery.vue';
+</script>
