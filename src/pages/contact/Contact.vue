@@ -5,7 +5,7 @@
         Contact me for any inquiries.
       </p>
       <p>
-        Email: <a href="mailto:callista.dembegiotis@gmail.com"> callista.dembegiotis@gmail.com </a> <br>
+        Email: <a href="mailto:callistademphoto@gmail.com"> callistademphoto@gmail.com </a> <br>
         Instagram: <a href="https://www.instagram.com/callistascamera/" target="_blank" rel="noopener noreferrer">@callistascamera</a>
       </p>
     </div>
