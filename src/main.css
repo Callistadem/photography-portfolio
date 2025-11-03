@@ -9,6 +9,7 @@ body {
     width: 100vw;
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 .home-bg {
@@ -27,4 +28,3 @@ a {
 a:hover {
     color: #fff5e4cc;
 }
-

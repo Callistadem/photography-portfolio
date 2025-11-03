@@ -13,7 +13,7 @@
 <style scoped>
   #portfolio {
     text-align: center;
-    font-size: 25px;
+    font-size: 1.5rem;
   }
 
   p {
@@ -29,6 +29,7 @@
 
   nav a {
     padding: 2rem;
+    font-size: 1.25rem;
   }
 
 </style>

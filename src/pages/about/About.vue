@@ -1,11 +1,10 @@
 <template>
     <div id="about">
-      <img src="@/assets/imgs/about/profile-pic.jpg" alt="About" />
+      <img class="about-photo" src="@/assets/imgs/about/profile-pic.jpg" alt="About" />
       <div class="about-text">
         <p>Hi, my name is Callista!</p>
         <p>
           I first got into photography back in 2017 and I’ve loved it ever since! 
-          I’m now 22 years old and I just recently graduated from a B.Sc. Computer Science. 
         </p>
         <p>
           I’m based in Montreal, Canada but I love traveling which is why I mainly do travel photography. 
@@ -29,21 +28,44 @@
     align-items: center;
     flex-direction: row;
     text-align: center;
-    padding: 3%;
+    padding: 3rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
   }
 
   img {
-    max-height: 70vh;
-    padding-left: 5rem;
-    padding-right: 5rem;
+    max-height: 80%;
+    overflow-x: hidden;
+    border-radius: 5px;
+    margin-right: 5rem;
+    width: 100%;
+    object-fit: cover;
   }
 
   .about-text {
     padding: 3rem;
     text-align: center;
-    width: 40%;
     line-height: 2rem;
   }
+  
+  @media (max-width: 1240px) {
+    #about{
+      flex-direction: column;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
 
+    .about-text {
+      padding: 1rem;
+      width: 100%;
+      font-size: 1rem; 
+    }
+
+    img {
+      width: 100%;
+      margin-right: 0;
+    }
+
+  }
   
 </style>
