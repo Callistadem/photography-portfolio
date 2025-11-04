@@ -13,7 +13,7 @@ body {
 }
 
 .home-bg {
-    background-image: url('@/assets/imgs/DSCF2816.JPG');
+    background-image: url('/public/assets/imgs/DSCF2816.JPG');
     background-size: cover;
     background-position: bottom;
     overflow: hidden;

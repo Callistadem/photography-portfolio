@@ -136,6 +136,7 @@
         <img 
           :src="photo.src" 
           :alt="photo.alt"
+          loading="lazy"
         />
       </div>
     </div>
@@ -166,30 +167,9 @@ const loadPhotos = () => {
   loading.value = true;
   
   try {
-    // Try different path patterns - one of these should work
-    
-    // Option 1: Absolute path from src
-    let photoModules = import.meta.glob('/src/assets/imgs/**/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}', { 
+    let photoModules = import.meta.glob('/public/assets/imgs/**/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}', { 
       eager: true 
     });
-    
-    // Option 2: If that doesn't work, try with @
-    if (Object.keys(photoModules).length === 0) {
-      photoModules = import.meta.glob('@/assets/imgs/**/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}', { 
-        eager: true 
-      });
-    }
-    
-    // Option 3: If that doesn't work, try relative from component location
-    if (Object.keys(photoModules).length === 0) {
-      photoModules = import.meta.glob('../assets/imgs/**/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}', { 
-        eager: true 
-      });
-    }
-    
-    console.log('Looking for folder:', props.photoType);
-    console.log('Folder path:', props.photoType.toLowerCase().replace(/ /g, '-'));
-    console.log('Available paths:', Object.keys(photoModules));
     
     const folderPath = props.photoType.toLowerCase().replace(/ /g, '-');
     
