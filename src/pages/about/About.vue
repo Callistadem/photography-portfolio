@@ -1,6 +1,6 @@
 <template>
     <div id="about">
-      <img class="about-photo" src="/public/assets/imgs/about/profile-pic.jpg" alt="About" />
+      <img class="about-photo" src="/src/imgs/about/profile-pic2.jpg" alt="About" />
       <div class="about-text">
         <p>Hi, my name is Callista!</p>
         <p>

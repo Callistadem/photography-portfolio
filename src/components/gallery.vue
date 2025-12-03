@@ -97,22 +97,17 @@
     color: #ccc;
   }
 
-  /* Responsive columns */
-  @media (max-width: 1200px) {
-    .gallery {
-      column-count: 3;
-    }
-  }
-
   @media (max-width: 768px) {
-    .gallery {
-      column-count: 2;
+    .gallery-item {
+      width: 300px;
+      height: 400px;
     }
   }
 
   @media (max-width: 480px) {
-    .gallery {
-      column-count: 1;
+    .gallery-item {
+      width: 250px;
+      height: 350px;
     }
   }
 </style>
@@ -150,65 +145,65 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+  import { ref, onMounted } from 'vue';
 
-const props = defineProps({
-  photoType: {
-    type: String,
-    required: true
-  }
-});
+  const props = defineProps({
+    photoType: {
+      type: String,
+      required: true
+    }
+  });
 
-const photos = ref([]);
-const loading = ref(true);
-const lightboxPhoto = ref(null);
+  const photos = ref([]);
+  const loading = ref(true);
+  const lightboxPhoto = ref(null);
 
-const loadPhotos = () => {
-  loading.value = true;
-  
-  try {
-    let photoModules = import.meta.glob('/public/assets/imgs/**/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}', { 
-      eager: true 
-    });
+  const loadPhotos = async () => {
+    loading.value = true;
     
-    const folderPath = props.photoType.toLowerCase().replace(/ /g, '-');
-    
-    const matchingPhotos = Object.entries(photoModules)
-      .filter(([path]) => {
-        console.log('Checking path:', path);
-        return path.includes(`/${folderPath}/`);
-      })
-      .map(([path, module], index) => {
-        const filename = path.split('/').pop().replace(/\.[^/.]+$/, '');
-        const title = filename.replace(/-/g, ' ').replace(/_/g, ' ');
-        
-        return {
-          id: index + 1,
-          src: module.default,
-          alt: title,
-          title: title.charAt(0).toUpperCase() + title.slice(1)
-        };
-      });
-    
-    console.log('Matching photos found:', matchingPhotos.length);
-    photos.value = matchingPhotos;
-  } catch (error) {
-    console.error('Error loading photos:', error);
-    photos.value = [];
-  } finally {
-    loading.value = false;
-  }
-};
+    try {
+      // Remove eager loading - load dynamically instead
+      let photoModules = import.meta.glob('/src/imgs/**/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}');
+      
+      const folderPath = props.photoType.toLowerCase().replace(/ /g, '-');
+      
+      // Filter matching paths first
+      const matchingPaths = Object.entries(photoModules)
+        .filter(([path]) => path.includes(`/${folderPath}/`));
+      
+      // Load images progressively
+      const matchingPhotos = await Promise.all(
+        matchingPaths.map(async ([path, importFn], index) => {
+          const module = await importFn(); // Load one at a time
+          const filename = path.split('/').pop().replace(/\.[^/.]+$/, '');
+          const title = filename.replace(/-/g, ' ').replace(/_/g, ' ');
+          
+          return {
+            id: index + 1,
+            src: module.default,
+            alt: title,
+            title: title.charAt(0).toUpperCase() + title.slice(1)
+          };
+        })
+      );
+      
+      console.log('Matching photos found:', matchingPhotos.length);
+      photos.value = matchingPhotos;
+    } catch (error) {
+      console.error('Error loading photos:', error);
+      photos.value = [];
+    } finally {
+      loading.value = false;
+    }
+  };
 
-const openLightbox = (photo) => {
-  lightboxPhoto.value = photo;
-};
+  const openLightbox = (photo) => {
+    lightboxPhoto.value = photo;
+  };
 
-const closeLightbox = () => {
-  lightboxPhoto.value = null;
-};
+  const closeLightbox = () => {
+    lightboxPhoto.value = null;
+  };
 
-onMounted(() => {
-  loadPhotos();
-});
+  onMounted(loadPhotos)
 </script>

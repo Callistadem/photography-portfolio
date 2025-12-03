@@ -2,7 +2,7 @@
     <div id="#home">
       <div class="title-container">
         <p class="title">CALLISTA DEM</p>
-        <p class="subtitle">TRAVEL PHOTOGRAPHER</p>
+        <p class="subtitle">PHOTOGRAPHER</p>
       </div>
       <div class="nav">
         <ul>
@@ -41,19 +41,20 @@ export default {
   }
 
   .nav {
-    width: 70%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
   }
 
   .nav ul {
     list-style-type: none;
     display: flex;
-    justify-content: space-between;
-    position: fixed;
-    padding: 1rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    bottom: 0;
+    justify-content: space-around; 
+    padding: 1rem 2rem;
+    margin: 0;
     width: 100%;
+    margin: 0 auto;
     box-sizing: border-box;
   }
 
@@ -61,7 +62,37 @@ export default {
     text-decoration: none;
     text-align: center;
     display: block;
-    padding: 1rem;
+    padding: 2rem 1rem;
+  }
+
+  .nav a {
+    color: white; 
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .nav ul {
+      padding: 1rem;
+      justify-content: space-between;
+    }
+    
+    .nav li {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nav ul {
+      padding: 0.75rem 0.5rem;
+    }
+    
+    .nav li {
+      padding: 0.25rem;
+      font-size: 0.8rem;
+    }
   }
 
   .subtitle{
