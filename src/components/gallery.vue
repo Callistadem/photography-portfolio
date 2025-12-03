@@ -169,7 +169,8 @@
       
       // Filter matching paths first
       const matchingPaths = Object.entries(photoModules)
-        .filter(([path]) => path.includes(`/${folderPath}/`));
+        .filter(([path]) => path.includes(`/${folderPath}/`))
+        .sort(([a], [b]) => a.localeCompare(b));
       
       // Load images progressively
       const matchingPhotos = await Promise.all(
